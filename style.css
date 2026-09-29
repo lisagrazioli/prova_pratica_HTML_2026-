@@ -54,6 +54,21 @@ img {
     --radius-pill: 100em;
     --layer-navigation: 90;
     --layer-skip-link: 100;
+        --spacing-16: 16px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    --spacing-40: 40px;
+    --color-accent: #0969DA;
+    --heading-4-font-size: 2rem;
+    --heading-4-font-weight: 400;
+    --heading-4-line-height: 1.2;
+    --heading-5-font-size: 1.375rem;
+    --heading-5-font-weight: 400;
+    --heading-5-line-height: 1.25;
+    --text-350-font-size: 1.125rem;
+    --text-350-line-height: 1.5;
+    --icon-size: 1em;
+    --icon-color: currentColor;
 }
 
 @media (max-width: 640px) {
@@ -418,7 +433,7 @@ body {
 }
 
 /* Su tablet cambia il layout, ma il popover resta attivo */
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
     .navigation {
         --navigation-height: 4em;
         --navigation-title-font-size: 1em;
@@ -472,7 +487,7 @@ body {
 }
 
 /* Su desktop JS rimuove popover e gli elementi si dispongono in linea */
-@media (min-width: 63.25rem) {
+@media (min-width: 1000px) {
     .navigation {
         --navigation-inline-list-padding: 0 0 0 1em;
         --navigation-inline-link-padding: 0 0.25em;
@@ -520,25 +535,199 @@ body {
         outline-offset: var(--focus-outline-offset);
     }
 }
-
-/* Destinazioni provvisorie dei link, da completare/sostituire in base al vostro case study */
-.chapters {
-    --chapters-padding: 2em 1.5em;
-    --chapters-section-min-height: 65vh;
-    --chapters-section-padding-top: 2em;
-
-    padding: var(--chapters-padding);
-    color: var(--color-white);
-    background: var(--color-black);
-    line-height: var(--text-200-line-height);
+@media (max-width: 640px) {
+    :root {
+        --heading-4-font-size: 1.5rem;
+        --heading-5-font-size: 1.25rem;
+        --text-350-font-size: 1rem;
+    }
 }
-
-.chapters section {
-    min-height: var(--chapters-section-min-height);
-    padding-top: var(--chapters-section-padding-top);
+ 
+/* 2. Utility del design system (nomi generici, riusabili ovunque) */
+.heading-size-4 {
+    font-size: var(--heading-4-font-size);
+    font-weight: var(--heading-4-font-weight);
+    line-height: var(--heading-4-line-height);
+    text-wrap: balance;
+}
+ 
+.heading-size-5 {
+    font-size: var(--heading-5-font-size);
+    font-weight: var(--heading-5-font-weight);
+    line-height: var(--heading-5-line-height);
+}
+ 
+.text-size-100 {
+    font-size: var(--text-100-font-size);
+    line-height: var(--text-100-line-height);
+}
+ 
+.text-size-350 {
+    font-size: var(--text-350-font-size);
+    line-height: var(--text-350-line-height);
+}
+ 
+.color-muted {
+    color: var(--color-muted);
+}
+ 
+.border-inline {
+    border-left: var(--border-width) solid var(--color-border-muted);
+    border-right: var(--border-width) solid var(--color-border-muted);
+}
+ 
+.border-top {
     border-top: var(--border-width) solid var(--color-border-muted);
 }
-
-.chapters a {
-    color: inherit;
+ 
+.border-bottom {
+    border-bottom: var(--border-width) solid var(--color-border-muted);
 }
+ 
+.icon {
+    display: block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    flex-shrink: 0;
+    color: var(--icon-color);
+}
+ 
+/* 3. Tema chiaro: ridefinisce solo i token che cambiano */
+.theme-light {
+    --color-muted: #5B655E;
+    --color-border-muted: #E6E9E7;
+    --color-cursor: #08872B;
+    --color-focus: #0969DA;
+    --color-accent: #0969DA;
+ 
+    color: var(--color-black);
+    background: var(--color-white);
+}
+ 
+/* 4. Componente «story» (prefisso proprio) — mobile first */
+.story-meta-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-24);
+    padding: var(--spacing-24);
+}
+ 
+.story-meta-value {
+    margin-top: 0.5em;
+    font-weight: var(--font-weight-semibold);
+}
+ 
+.story-body {
+    display: grid;
+    gap: var(--spacing-40);
+    padding: var(--spacing-40) var(--spacing-24);
+}
+ 
+.story-article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-32);
+}
+ 
+.story-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+}
+ 
+/* .eyebrow è centrata di base (hero): qui va a sinistra */
+.story-header .eyebrow {
+    justify-content: flex-start;
+}
+ 
+.story-lead {
+    max-width: 24em;
+}
+ 
+.story-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    max-width: 38em;
+}
+ 
+.story-text h3 {
+    margin-bottom: 0.25em;
+}
+ 
+.story-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-32);
+}
+ 
+.story-toc-list {
+    list-style: none;
+    margin-top: 0.75em;
+    padding-left: 1.5em;
+}
+ 
+.story-toc-list a {
+    display: block;
+    padding: 0.4em 0;
+    color: var(--color-muted);
+    font-size: var(--text-100-font-size);
+    text-decoration: none;
+}
+ 
+.story-toc-list a:hover {
+    color: var(--color-black);
+}
+ 
+.story-deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    padding-top: var(--spacing-24);
+}
+ 
+.story-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    align-self: flex-start;
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+}
+ 
+.story-link:hover {
+    text-decoration: underline;
+}
+ 
+.story-toc-list a:focus-visible,
+.story-link:focus-visible {
+    outline: var(--focus-outline-width) solid var(--color-focus);
+    outline-offset: var(--focus-outline-offset);
+    border-radius: var(--radius-control);
+}
+ 
+/* 5. Desktop: stessa soglia della navigazione (1000px) */
+@media (min-width: 1000px) {
+    .story-meta-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: var(--spacing-24) var(--spacing-64);
+    }
+ 
+    .story-body {
+        /* la colonna testo ha una larghezza massima (38em), la sidebar è fissa:
+           allargando la finestra cresce solo lo spazio in mezzo */
+        grid-template-columns: minmax(0, 38em) 15em;
+        justify-content: space-between;
+        gap: var(--spacing-64);
+        padding: var(--spacing-64);
+    }
+ 
+    .story-aside {
+        position: sticky;
+        top: var(--spacing-32);
+        align-self: start;
+    }
+}
+ 

@@ -69,6 +69,10 @@ img {
     --text-350-line-height: 1.5;
     --icon-size: 1em;
     --icon-color: currentColor;
+    --spacing-48: 48px;
+    --heading-6-font-size: 1.125rem;
+    --heading-6-font-weight: 400;
+    --heading-6-line-height: 1.3;
 }
 
 @media (max-width: 640px) {
@@ -336,7 +340,7 @@ body {
     color: var(--color-white);
 }
 
-/* Il layout "compatto" dipende se l'attributo popover è presente (su desktop viene rimosso via JS) */
+
 .navigation:has(.navigation-panel[popover]) {
     height: var(--navigation-height);
 }
@@ -432,7 +436,6 @@ body {
     }
 }
 
-/* Su tablet cambia il layout, ma il popover resta attivo */
 @media (min-width: 768px) {
     .navigation {
         --navigation-height: 4em;
@@ -486,7 +489,7 @@ body {
     }
 }
 
-/* Su desktop JS rimuove popover e gli elementi si dispongono in linea */
+
 @media (min-width: 1000px) {
     .navigation {
         --navigation-inline-list-padding: 0 0 0 1em;
@@ -543,7 +546,6 @@ body {
     }
 }
  
-/* 2. Utility del design system (nomi generici, riusabili ovunque) */
 .heading-size-4 {
     font-size: var(--heading-4-font-size);
     font-weight: var(--heading-4-font-weight);
@@ -591,8 +593,7 @@ body {
     flex-shrink: 0;
     color: var(--icon-color);
 }
- 
-/* 3. Tema chiaro: ridefinisce solo i token che cambiano */
+
 .theme-light {
     --color-muted: #5B655E;
     --color-border-muted: #E6E9E7;
@@ -604,7 +605,7 @@ body {
     background: var(--color-white);
 }
  
-/* 4. Componente «story» (prefisso proprio) — mobile first */
+
 .story-meta-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -636,7 +637,7 @@ body {
     gap: 1em;
 }
  
-/* .eyebrow è centrata di base (hero): qui va a sinistra */
+
 .story-header .eyebrow {
     justify-content: flex-start;
 }
@@ -708,7 +709,7 @@ body {
     border-radius: var(--radius-control);
 }
  
-/* 5. Desktop: stessa soglia della navigazione (1000px) */
+
 @media (min-width: 1000px) {
     .story-meta-list {
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -716,8 +717,7 @@ body {
     }
  
     .story-body {
-        /* la colonna testo ha una larghezza massima (38em), la sidebar è fissa:
-           allargando la finestra cresce solo lo spazio in mezzo */
+       
         grid-template-columns: minmax(0, 38em) 15em;
         justify-content: space-between;
         gap: var(--spacing-64);
@@ -730,4 +730,114 @@ body {
         align-self: start;
     }
 }
+ .theme-light{
+    --color-icon-bg:#EAF6EC;
+ }
+.heading-size-6 {
+    font-size: var(--heading-6-font-size);
+    font-weight: var(--heading-6-font-weight);
+    line-height: var(--heading-6-line-height);
+}
+.story-levels-list {
+    list-style: none;
+}
+.story-level {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75em;
+    padding: var(--spacing-40) var(--spacing-24);
+}
+.story-level + .story-level {
+    border-top: var(--border-width) solid var(--color-border-muted);
+}
+.story-level-icon {
+    --icon-size: 1.5em;
+    --icon-color: var(--color-cursor);
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75em;
+    height: 2.75em;
+    margin-bottom: 1.5em;
+    border-radius: 0.5em;
+    background: var(--color-icon-bg);
+}
+ 
+
+@media (min-width: 768px) {
+    .story-levels-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+ 
+    .story-level {
+        padding: var(--spacing-48) var(--spacing-40);
+        padding-bottom: var(--spacing-64);
+    }
+ 
+    .story-level + .story-level {
+        border-top: 0;
+        border-left: var(--border-width) solid var(--color-border-muted);
+    }
+}
+theme-light {
+    --color-surface: #F2F2F2;
+}
+ 
+
+.sitemap-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: var(--spacing-64) var(--spacing-24);
+    text-align: center;
+}
+ 
+
+.sitemap-header .heading {
+    max-width: 13em;
+    text-wrap: wrap;
+}
+ 
+.sitemap-lead {
+    max-width: 30em;
+}
+ 
+
+.sitemap-detail {
+    display: grid;
+    align-items: center;
+}
+ 
+.sitemap-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+    max-width: 26em;
+    padding: var(--spacing-40) var(--spacing-24);
+}
+ 
+.sitemap-figure {
+    background: var(--color-surface);
+}
+ 
+.sitemap-figure img {
+    display: block;
+    width: 100%;
+}
+ 
+@media (min-width: 1000px) {
+    .sitemap-detail {
+        grid-template-columns: 5fr 6fr;
+    }
+ 
+    .sitemap-text {
+        padding: var(--spacing-64);
+    }
+}
+ 
  
